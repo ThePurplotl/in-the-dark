@@ -1,5 +1,5 @@
-# in-da-dark
-Get da ores!
+# in-the-dark
+Get the ores. Give them to your "friend". Or not...
 
 # CREDITS
 [16x16 Industrial Tileset by 0x72](https://0x72.itch.io/16x16-industrial-tileset)
