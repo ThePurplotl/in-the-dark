@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-import LoadScene from "./LoadScene";
+import GameScene from "./GameScene";
+import Preloader from "./Preloader";
 import MenuScene from "./MenuScene";
 
 const config = 
@@ -8,13 +9,17 @@ const config =
     parent: "game",
     width: 640,
     height: 480,
+    pixelArt: true,
     scale: {
         mode: Phaser.Scale.RESIZE,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    scene: [LoadScene, MenuScene],
+    scene: [Preloader, MenuScene, GameScene],
     physics: {
-        default: "arcade"
+        default: "arcade",
+        arcade: {
+            gravity: {y: 300}
+        }
     }
 };
 
