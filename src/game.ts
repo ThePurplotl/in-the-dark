@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import GameScene from "./GameScene";
 import Preloader from "./Preloader";
 import MenuScene from "./MenuScene";
+import Dialog from "./Dialog";
 
 const config = 
 {
@@ -14,7 +15,7 @@ const config =
         mode: Phaser.Scale.RESIZE,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    scene: [Preloader, MenuScene, GameScene],
+    scene: [Preloader, MenuScene, GameScene, Dialog],
     physics: {
         default: "arcade",
         arcade: {

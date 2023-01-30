@@ -3,20 +3,18 @@ import Phaser from "phaser";
 const SPEED:number = 50;
 
 let level:Phaser.Tilemaps.Tilemap;
-let floorLayer:Phaser.Tilemaps.TilemapLayer;
 let cursors:Phaser.Types.Input.Keyboard.CursorKeys;
 let alreadyPressed:boolean = false;
 
 export default class Player extends Phaser.Physics.Arcade.Sprite
 {
-    constructor(readonly scene:Phaser.Scene, x:number, y:number, _floorLayer:Phaser.Tilemaps.TilemapLayer, _level:Phaser.Tilemaps.Tilemap)
+    constructor(readonly scene:Phaser.Scene, x:number, y:number, _level:Phaser.Tilemaps.Tilemap)
     {
         super(scene, x, y, "dude");
 
         this.anims.play("idle");
 
         level = _level;
-        floorLayer = _floorLayer;
         cursors = this.scene.input.keyboard.createCursorKeys();
     }
 
@@ -81,6 +79,28 @@ export default class Player extends Phaser.Physics.Arcade.Sprite
         else if (this.y < 0)
         {
             this.setY(0);
+        }
+
+        if (cursors.shift.isDown && alreadyPressed === false)
+        {
+            let xAndY = this.x + ", " + this.y;
+
+            const copy = async () => 
+            {
+                try
+                {
+                    await navigator.clipboard.writeText(xAndY);
+                    alert(xAndY);
+                }
+                catch (e)
+                {
+                    console.error("Failed to copy: " + e);
+                } 
+            }
+
+            copy();
+
+            alreadyPressed = true;
         }
     }
 }
