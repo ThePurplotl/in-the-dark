@@ -49,10 +49,12 @@ export default class MenuScene extends Phaser.Scene
         this.add.existing(player);
         this.physics.add.existing(player);
 
+        /*
         friend = new Friend(this, 110, 40, level, player);
 
         this.add.existing(friend);
         this.physics.add.existing(friend);
+        */
 
         actionKey = this.input.keyboard.addKey("C");
 
@@ -99,22 +101,25 @@ export default class MenuScene extends Phaser.Scene
         pressToChatText.setVisible(false);
 
         this.physics.add.collider(player, floor);
-        this.physics.add.collider(friend, floor);
+        // this.physics.add.collider(friend, floor);
         this.physics.add.collider(player, crates);
         this.physics.add.overlap(player, ores, (player, ore) =>
         {
             ore.destroy();
+            this.sound.play("collect");
             score++;
         }, undefined, this);
 
         this.physics.add.overlap(player, goldOres, (player, ore) =>
         {
             ore.destroy();
+            this.sound.play("epic-collect");
             score += 2;
         }, undefined, this);
 
         this.sound.play("cavernous", {loop: true});
 
+        /*
         actionKey.on("down", () =>
         {
             if (this.physics.overlap(player, friend))
@@ -122,6 +127,7 @@ export default class MenuScene extends Phaser.Scene
                 this.scene.launch("Dialog", {dialog: this.cache.text.get("ask-for-ore")});
             }
         });
+        */
 
         // make the camera follow the player
         this.cameras.main.setZoom(5);
@@ -135,12 +141,14 @@ export default class MenuScene extends Phaser.Scene
         if (player.y > level.heightInPixels + 10)
         {
             player.destroy();
+            score = 0;
             this.sound.stopAll();
             this.scene.restart();
         }
 
         scoreDisplay.text = "Score:\n" + score;
 
+        /*
         if (this.physics.overlap(player, friend))
         {
             pressToChatText.setVisible(true);
@@ -149,5 +157,6 @@ export default class MenuScene extends Phaser.Scene
         {
             pressToChatText.setVisible(false);
         }
+        */
     }
 }

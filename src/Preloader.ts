@@ -47,6 +47,7 @@ export default class Preloader extends Phaser.Scene
         this.load.audio("main-menu", "assets/music/main-menu.mp3");
 
         this.load.audio("collect", "assets/sounds/collect.mp3");
+        this.load.audio("epic-collect", "assets/sounds/epic-collect.mp3");
     }
 
     create()
