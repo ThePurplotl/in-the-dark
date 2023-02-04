@@ -80,27 +80,5 @@ export default class Player extends Phaser.Physics.Arcade.Sprite
         {
             this.setY(0);
         }
-
-        if (cursors.shift.isDown && alreadyPressed === false)
-        {
-            let xAndY = this.x + ", " + this.y;
-
-            const copy = async () => 
-            {
-                try
-                {
-                    await navigator.clipboard.writeText(xAndY);
-                    alert(xAndY);
-                }
-                catch (e)
-                {
-                    console.error("Failed to copy: " + e);
-                } 
-            }
-
-            copy();
-
-            alreadyPressed = true;
-        }
     }
 }

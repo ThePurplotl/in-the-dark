@@ -16,6 +16,7 @@ export default class MenuScene extends Phaser.Scene
 
         playBtn = this.add.bitmapText(logo.x - 40, logo.y + 100, "retro", "play");
         
+        // create a hovering effect for the play button (when hovered over, the play button changes to all caps)
         this.input.on("pointermove", (pointer:Phaser.Input.Pointer) =>
         {
             if ((pointer.x > playBtn.x && pointer.x < playBtn.x + playBtn.width)
@@ -29,6 +30,7 @@ export default class MenuScene extends Phaser.Scene
             }
         });
 
+        //start the game when the play button is clicked
         this.input.on("pointerdown", (pointer:Phaser.Input.Pointer) =>
         {
             if ((pointer.x > playBtn.x && pointer.x < playBtn.x + playBtn.width)

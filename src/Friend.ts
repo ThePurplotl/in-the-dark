@@ -20,7 +20,7 @@ export default class Friend extends Phaser.Physics.Arcade.Sprite
     {
         super.preUpdate(time, delta);
 
-        // stare at the player
+        // stare at the player (creepy)
 
         if (player.x < this.x)
         {

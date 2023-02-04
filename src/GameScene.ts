@@ -6,7 +6,7 @@ import Player from "./Player";
 let player:Player;
 let friend:Friend;
 
-let actionKey:Phaser.Input.Keyboard.Key;
+// let actionKey:Phaser.Input.Keyboard.Key;
 
 let level:Phaser.Tilemaps.Tilemap;
 let levelTiles:Phaser.Tilemaps.Tileset;
@@ -25,7 +25,7 @@ let goldOres:Phaser.Physics.Arcade.StaticGroup;
 let score:number = 0;
 let scoreDisplay:Phaser.GameObjects.BitmapText;
 
-let pressToChatText:Phaser.GameObjects.BitmapText;
+// let pressToChatText:Phaser.GameObjects.BitmapText;
 
 export default class MenuScene extends Phaser.Scene
 {
@@ -56,7 +56,7 @@ export default class MenuScene extends Phaser.Scene
         this.physics.add.existing(friend);
         */
 
-        actionKey = this.input.keyboard.addKey("C");
+        // actionKey = this.input.keyboard.addKey("C");
 
         floor = level.createLayer("Floor", levelTiles, 0, 0);
         floor.setCollisionByProperty({collides: true});
@@ -97,12 +97,16 @@ export default class MenuScene extends Phaser.Scene
 
         scoreDisplay = this.add.bitmapText(this.cameras.main.centerX - this.sys.renderer.width / 10, this.cameras.main.centerY - this.sys.renderer.height / 10, "retro", "Score:\n" + score, 10).setScrollFactor(0);
 
+        /*
         pressToChatText = this.add.bitmapText(this.cameras.main.centerX - this.sys.renderer.width / 10, this.cameras.main.centerY - this.sys.renderer.height / 10 + 30, "retro", "Press " + String.fromCharCode(actionKey.keyCode) + " to talk", 5).setScrollFactor(0);
         pressToChatText.setVisible(false);
+        */
 
         this.physics.add.collider(player, floor);
         // this.physics.add.collider(friend, floor);
         this.physics.add.collider(player, crates);
+        
+        // collect ores
         this.physics.add.overlap(player, ores, (player, ore) =>
         {
             ore.destroy();
@@ -138,6 +142,7 @@ export default class MenuScene extends Phaser.Scene
 
     update(time:number, delta:number):void 
     {
+        // KILL the player if they fall off the map
         if (player.y > level.heightInPixels + 10)
         {
             player.destroy();

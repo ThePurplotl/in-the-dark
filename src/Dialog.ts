@@ -1,3 +1,5 @@
+// brocken dialog system
+
 import Phaser from "phaser";
 
 let dialog:string;
@@ -23,7 +25,7 @@ export default class Dialog extends Phaser.Scene
 
     create()
     {
-
+        // split the given dialog string
         dialogLines = dialog.split(";");
 
         dialogBox = this.add.image(this.sys.renderer.width / 2, 0, "chat-bubble");
@@ -41,6 +43,7 @@ export default class Dialog extends Phaser.Scene
                 currentLine += 1;
             }
 
+            // y/n system (WHICH I CANT GET TO WORK >:C)
             if (currentDialogLine.includes("y-n"))
             {
                 if (canGoForward)
@@ -79,6 +82,7 @@ export default class Dialog extends Phaser.Scene
 
     update(time:number, delta:number):void 
     {
+        // if there are no more lines to read, exit (doesnt work)
         if (currentLine > dialogLines.length)
         {
             this.scene.stop();
