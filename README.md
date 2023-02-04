@@ -12,6 +12,44 @@ Preview:\
 ## BUILDING
 If you want to build the game from source, follow these steps.
 
+### Prerequisites:
+You're going to want to make sure you have these installed:
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/)
+
+First, open Git and run this
+```
+git clone https://github.com/PurpleP-Ink/in-the-dark.git
+```
+this command will get this repository and put it onto your computer.
+
+Now, navigate into the repository by using this command: `cd in-the-dark` and run this command:
+
+```
+npm install
+```
+this command will install all the modules this game needs to work.
+
+After you've done all of that, run this command.
+```
+npm start build
+```
+You should get an output like this:
+```
+> in-the-dark@1.0.0 start
+> parcel index.html --open build
+
+Server running at http://localhost:1234
+✨ Built in 6.45s
+
+```
+A folder called 'dist' will be created, which contains the built game.
+
+You can then play the game by going to http://localhost:1234 (the webserver Parcel created)
+or put the generated 'dist' folder in a web server which you can make with [this VSCode extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+
+or if you don't use VSCode, create one [with Python](https://pythonbasics.org/webserver/)
+
 ## CREDITS
 
 - [16x16 Industrial Tileset by 0x72](https://0x72.itch.io/16x16-industrial-tileset)
