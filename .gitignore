@@ -1,8 +1,0 @@
-.parcel-cache/
-
-node_modules/
-
-dist/
-
-#ignore backup files (files ending with '~')
-*~
